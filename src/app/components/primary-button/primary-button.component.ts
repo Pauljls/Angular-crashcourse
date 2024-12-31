@@ -17,7 +17,6 @@ export class PrimaryButtonComponent {
 
   handleButtonClick(){
     this.btnClicked.emit()
-    alert(`acabas de dar un click en `+ this.label())
   }
   //this.handleButtonClick.emit(5)
 }

@@ -1,5 +1,6 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { PrimaryButtonComponent } from '../primary-button/primary-button.component';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,7 @@ import { PrimaryButtonComponent } from '../primary-button/primary-button.compone
     <div class="bg-slate-100 px-4 py-3 shadow-md flex justify-between items-center">
       <span class="text-xl">My store</span>
       <!--PODERMOS USAR CONTENIDO DINAMICO USANDO [] EN HTML-->
-      <app-primary-button [label]="cart()" (btnClicked)="showButtonClicked()"/>
+      <app-primary-button [label]="'Cart('+cartService.cart().length+')'" />
 
     </div>
   `,
@@ -17,10 +18,8 @@ import { PrimaryButtonComponent } from '../primary-button/primary-button.compone
 })
 export class HeaderComponent {
   //AQUI PUEDES ASIGNAR UN VALOR QUE IRA A LA PROPIEDAD DEL COMPONENTE PIRMARY BUTTON
-  cart = input('Prueba')
+  //cart = input('Prueba')
+  cartService = inject(CartService)
 
-  showButtonClicked(){
-    alert('clicked')
-  }
 
 }
