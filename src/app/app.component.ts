@@ -6,9 +6,9 @@ import { ProductsListComponent } from "./pages/products-list/products-list.compo
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent, ProductsListComponent],
-  template: `<app-header/>
-  <app-products-list/>`,
+  imports: [HeaderComponent, RouterOutlet],
+  template: `<app-header/><!--ESTE COMPONENTE AL SER ESTATICO ESTARA PRESENTE EN TODDAS TUS VISTAS-->
+  <router-outlet/>`,//REMPLAZARA POR EL COMPONENETE QUE SE ESPECIFICO EN APP.ROUTES, EN ESTE CASO Products-list
   styleUrl: './app.component.css'
 })
 export class AppComponent {
