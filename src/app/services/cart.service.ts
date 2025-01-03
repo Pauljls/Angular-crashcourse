@@ -19,9 +19,9 @@ export class CartService {
   }
 
   removeFromCart(id : number){
-    this.cart.set(
-      this.cart().filter((p)=> p.id !== id)
-    );
+    const newCart = [...this.cart()];
+    newCart.splice(id, 1);
+    this.cart.set(newCart);
   }
   constructor() { 
   }

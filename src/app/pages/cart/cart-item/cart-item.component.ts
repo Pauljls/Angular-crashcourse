@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { Product } from '../../../models/products.models';
 import { ButtonComponent } from "../../../components/button/button.component";
 import { CartService } from '../../../services/cart.service';
@@ -15,7 +15,7 @@ import { CartService } from '../../../services/cart.service';
       <span>{{'$'+item().price}}</span>
     </div>
     <div class="flex-1"></div>
-    <app-button label="Remove" (btnClicked)="cartService.removeFromCart(item().id)"/>
+    <app-button label="Remove"  (btnClicked)="this.removeEvent.emit()"/>
   </div>
   `,
   styles: ''
@@ -23,4 +23,5 @@ import { CartService } from '../../../services/cart.service';
 export class CartItemComponent {
   cartService = inject(CartService)
   item = input.required<Product>()
+  removeEvent = output()
 }
